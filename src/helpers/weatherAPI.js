@@ -1,7 +1,16 @@
-// Remova os comentários a medida que for implementando as funções
+const TOKEN = import.meta.env.VITE_TOKEN;
 
-export const searchCities = (/* term */) => {
-//   seu código aqui
+const errorMessage = window.alert('Nenhuma cidade encontrada');
+
+export const searchCities = async (term) => {
+  const cities = fetch(`http://api.weatherapi.com/v1/search.json?key=${TOKEN}&q=${term}`)
+    .then((response) => {
+      const pesquisa = Object.entries(response);
+      if (pesquisa.length === 0) {
+        return errorMessage;
+      }
+    });
+  return cities;
 };
 
 export const getWeatherByCity = (/* cityURL */) => {
