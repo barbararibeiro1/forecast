@@ -1,8 +1,7 @@
 const TOKEN = import.meta.env.VITE_TOKEN;
 
-const errorMessage = window.alert('Nenhuma cidade encontrada');
-
 export const searchCities = async (term) => {
+  const errorMessage = window.alert('Nenhuma cidade encontrada');
   const response = await fetch(`http://api.weatherapi.com/v1/search.json?key=${TOKEN}&q=${term}`);
   const data = response.json();
   if (response.length === 0) {
