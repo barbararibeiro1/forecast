@@ -114,9 +114,16 @@ export function createCityElement(cityInfo) {
 export async function handleSearch(event) {
   event.preventDefault();
   clearChildrenById('cities');
+  // const ul = document.querySelector('#cities');
   const searchInput = document.getElementById('search-input');
   const searchValue = searchInput.value;
-  const result = await getWeatherByCity(searchCities(searchValue));
+  const cities = await searchCities(searchValue);
+  const result = await getWeatherByCity(cities);
   console.log(result);
-  return result;
+  // if (result) {
+  //   const cityList = createCityElement(result);
+  //   console.log(cityList);
+  // }
+  // const cityList = createCityElement(result);
+  // cityList.appendChild(ul);
 }
